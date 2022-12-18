@@ -25,8 +25,8 @@ paginate = 10
     highlightjs_extra_languages = ["yaml"]
     # Include any custom CSS and/or JS files
     # (relative to /static folder)
-    custom_css = ["css/my.css"]
-    custom_js = ["js/my.js"]
+    custom_css = ["css/main.css"]
+    custom_js = ["js/main.js"]
 
   [params.piwikAnalytics]
     siteid = 2
