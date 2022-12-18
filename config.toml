@@ -1,6 +1,62 @@
-baseURL = 'http://example.org/'
+baseURL = '/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = '잊혀져 가는 기억을 기록하기 ....'
+author = 'KS.KIM'
 
 
-theme = "ananke"
+theme = "blackburn"
+
+copyright = "&copy; 2022. All right reserved."
+cononifyurls = true
+paginate = 10
+
+[indexes]
+  tag = "tags"
+  topic = "topics"
+
+[params]
+    subtitle = "천천히 ... 그리고 꾸준히 ..."
+    brand = "KNMS"
+    dateFormat = "2006. 01. 02, 15:04"    
+    googleAnalytics = ""
+    disqus = ""
+    # CSS name for highlight.js
+    highlightjs = "androidstudio"
+    highlightjs_extra_languages = ["yaml"]
+    # Include any custom CSS and/or JS files
+    # (relative to /static folder)
+    custom_css = ["css/my.css"]
+    custom_js = ["js/my.js"]
+
+  [params.piwikAnalytics]
+    siteid = 2
+    piwikroot = "/"    
+
+
+[menu]
+  # Shown in the side menu.
+  [[menu.main]]
+    name = "Home"
+    pre = "<i class='fa fa-home fa-fw'></i>"
+    weight = 1
+    identifier = "home"
+    url = "/"
+  [[menu.main]]
+    name = "Posts"
+    pre = "<i class='fa fa-list fa-fw'></i>"
+    weight = 2
+    identifier = "post"
+    url = "/post/"
+  [[menu.main]]
+    name = "About"
+    pre = "<i class='fa fa-user fa-fw'></i>"
+    weight = 3
+    identifier = "about"
+    url = "/about/"
+#  [[menu.main]]
+#    name = "Contact"
+#    pre = "<i class='fa fa-phone fa-fw'></i>"
+#    weight = 4
+#    url = "/contact/"    
+
+
