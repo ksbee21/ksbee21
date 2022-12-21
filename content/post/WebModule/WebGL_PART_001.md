@@ -2,7 +2,7 @@
 title: "WebGL2 - 개발방법 [ 01 ]"
 date: 2022-12-18T20:58:24+09:00
 draft: false
-tags : ["Web","WebGL", "Language", "Canvas"]
+tags : ["Web","WebGL", "Language"]
 topics : []
 description : "WebGL 소개 및 필요성 "
 ---
