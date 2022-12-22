@@ -2,7 +2,7 @@
 title: "WebGL2 - Vector 연산 02 [ 03 ]"
 date: 2022-12-20T21:26:00+09:00
 draft: false
-tags : ["Web","WebGL", "Language", "Math", "Vector"]
+tags : ["Web","WebGL", "Language", "Math", "Vector", "Javascript"]
 topics : []
 description : "Web GL 에서 사용하는 Vector 특성 "
 ---
