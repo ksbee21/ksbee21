@@ -2,7 +2,7 @@
 title: "Blog 를 시작하며 "
 date: 2022-12-17T22:38:43+09:00
 draft: false
-description : "프로그램 개발자 ..."
+description : "꿈만 꾸는 개발자 ..."
 ---
 
 

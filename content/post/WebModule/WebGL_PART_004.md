@@ -2,7 +2,7 @@
 title: "WebGL2 - Matrix 연산 01 [ 04 ]"
 date: 2022-12-21T22:47:18+09:00
 draft: false
-tags : ["Web","WebGL", "Language", "Math", "Matrix", "Javascript"]
+tags : ["Web","WebGL", "Language","Javascript", "Math", "Matrix"]
 topics : []
 description : "Web GL 에서 사용하는 Matrix 소개 "
 ---
