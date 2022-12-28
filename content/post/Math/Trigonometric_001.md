@@ -121,8 +121,9 @@ description : "수식 없이 이해하기"
         }
    ``` 
 
-   Canvas 를 그리는 부분은 잠시 놓아 두고 보면, 그림을 그릴 때 사용한 부분이 degree 에서 radian 으로 변환하여 사용한 것고, Math.sin, Math.cos 함수를 그리는 용도로 사용하고 있습니다.    
+   Canvas 를 그리는 부분은 잠시 놓아 두고 보면, 그림을 그릴 때 사용한 부분이 degree 에서 radian 으로 변환하여 사용하였고,  Math.sin, Math.cos 함수를 그리는 용도로 사용하고 있습니다.    
    javascript 에서는 sine, cosine, tangent 와 그 역함수 등을 api 로 제공하고 있습니다.    물론 대부분의 언어에서 언급한 함수는 제공하고 있습니다.    
+   프로그램에서 삼각함수의 입력값은 모두 radian 입니다.   그렇기 때문에 degree 에서 radian, radian 에서 degree 로의 변환이 필요합니다.   
    
 
    아래는 그 결과 입니다.  이 예시를 보면서 간단하게 삼각함수를 정리해 보고자 합니다.    
