@@ -27,7 +27,7 @@ description : ""
    그림에서 보이는 원은 cos(theta), sin(theta) - x, y 의 조합입니다.( 여기서 theta 는 각을 의미함 )    
    두점 사이의 거리에서 보았듯이, 모든 빗변은 1입니다. 1의 제곱으로 이야기 할 수 있습니다. 
    빗변 제곱 = x거리 제곱 + y거리 제곱과 같습니다.   x 거리는  cos(theta) 입니다. y 거리는 sin(theta) 입니다.      
-   1 = sin^2 + cos^2 이 쉽게 연상 될 수 있을 것입니다.  빗변의 길이가 1일 때 거리를 곱하지 않은 sin^2 + cos^2 = 1 은 원에서 보듯 언제나 1 입니다. 
+   1 = sin^2 + cos^2 이 쉽게 연상 될 수 있을 것입니다.  빗변의 길이가 1일 때 sin^2 + cos^2 = 1 은 원에서 보듯 언제나 1 입니다. 
 
    ### 그림에서 선분 PQ 의 길이를 어떻게 구할까요? 
    1. 구하고자 하는 길이는 선분 PQ 이고, 삼각형 OPQ 를 대상으로 하지만, 이해를 위해 삼각형 OPT 를 기준으로 생각해 보겠습니다. 
@@ -73,9 +73,48 @@ description : ""
    > [cos, -sin] 을 P.x, P.y 와 곱해서 더해주면 Q.x 의 위치를 알 수 있다는 의미 입니다. 
 
    ### Q.y 는 sin 덧셈을 활용하면 구할 수 있습니다. 
-   y 값에 대한 정리는 추후 시간이 될 때 정리해 보겠습니다.    
-   sin(beta)*x + cos(beta)*y 로 덧셈 공식을 활용하면 구할 수 있습니다.    
+   1. 위 그림 OPT 삼각형을 기준으로 간단하게 살펴 보겠습니다. 
+   > P 점을 중심으로 각도 theta1 이 있고 P점에서 수직으로 wt 연결할 때 alpha1, beta1 각이 나눠진 것으로 간주 하겠습니다.    
+   > P 점 각 theta1 = alpha1 + beta1 이고 alpah1 과 beta 1은 P에서 마주 보는 변과 수직으로 나뉜 각도라 가정하겠습니다. 
+   > PO 의 길이를 a 라고 하고 PT 의 길이를 b 라고 하겠습니다. Pwt 의 길이를 c 라고 정의 합니다.  
+   > 알고 있는 것은 P의 각 theta1 = alpha1 + beta1 변의 길이 a, b, 높이 c 라고 정의 합니다. 
 
+   2. 전체 삼각형의 넓이(면적)
+   > 알고 있는 정보를 바탕으로 sin(theta1) * a 라고 하면 O에서 PT 선분에 직각인 높이를 알게 됩니다.  이를 h 라고 하겠습니다.    
+   > 선분 PT 의 길이는 b 라고 주어 졌으니, 면적은 0.5 * h * b =  0.5 * sin(theta1) * a * b 입니다. 
+
+   3. 삼각형 PQwt의 넓이(면적)
+   > OPwt 의 P 위치에서 각도를 alpha1 이라고 정의 합니다. 
+   > cos(alpha1) * a = Pwt 까지의 길이 입니다. 앞서 정의한 c 입니다. 
+   > sin(alpha1) * c = wt 에서 선분 OP 와 수직을 이루는 높이 입니다. h1 이라고 하겠습니다. 
+   > 넓이는 0.5*c*h1 = 0.5*sin(alpha1)*c*a = 0.5*sin(alpha1)*cos(alpha1)*a*a 입니다. 
+   > 치환을 위해서 넓이는 0.5*sin(alpha1)*a*c 로 정의해 놓습니다. 
+
+   4. 삼각형 PwtT의 넓이(면적)
+   > wtPT 의 P 위치에서의 각도를 beta1 이라고 정의 합니다. 
+   > cos(beta1)*b = Pwt, P에서 wt 까지의 길이 c 입니다.   이 c 는 앞서 계산한 c 와 같습니다.  c = cos(beta1)*b = cos(alpha1) * a
+   > sin(beta1)*c = wt 에서 선분 PT 와 수직을 이루는 높이 입니다. h2 라고 정의 하겠습니다. 
+   > 넓이는 0.5*b*h2 = 0.5 * sin(beta1)*b *c c를 분배하지 않고 일단 그대로 두겠습니다. 
+
+   5. 계산을 원활히 하기 위해 공통적인 영역을 바꿔 보겠습니다. 
+   > 정의한 내용중 c = cos(beta1)*b = cos(alpha1)*a 이 항목을 활용하여 위의 두식을 약간 변형해 보겠습니다. 
+   > 삼각형 PQwt 면적 0.5*sin(alpha1)*a*c = 0.5*sin(alpha1)*a*  cos(beta1)*b
+   > 삼각형 PwtT 면적 0.5*sin(beta1)*b *c = 0.5*sin(beta1)*b*  cos(alpha1)*a
+
+   6. 전체 삼각형의 넓이는 부분삼각형의 넓이의 합과 같습니다. 
+   > 0.5 * sin(theta1) * a * b = 0.5*sin(alpha1)*a*  cos(beta1)*b +  0.5*sin(beta1)*b*  cos(alpha1)*a   
+   > 양변에서 같은 내용을 나누어 삭제해 보겠습니다.   같은 항목인 ( 0.5, a, b 를 각각 양변에서 나누어 줍니다. )   
+   > sin(theta1) = sin(alpha1)*cos(beta1) + sin(beta1)*cos(alpha1)    
+   > tehta1 = alpha1 + beta1 입니다.    
+   > sin(alpha1+beta1) = sin(alpha1)*cos(beta1) + sin(beta1)*cos(alpha1)   
+   > cos(alpha1) = x, sin(alpha1) = y 주어진 x,y 가 있을 경우 변화한 beta1 만큼만 이동하면 됩니다.    
+   > 어떤 좌표에서 beta1 이 주어지면 beta1 만클이 아닌 시작점부터 변환한 것이기 때문에 변환된 위치는 사실 alpha1+beta1 의 위치 입니다.      
+   > y * cos(beta1) + x* sin(beta1) 이므로 행렬식에는 [ sin, cos ] 으로 표혀하게 됩니다.    
+
+   ### 이상의 x, y 를 모두 조합하면 다음과 같은 행렬이 구성됩니다. 
+   $$
+   \begin{bmatrix}cos&-sin\\\sin&cos \end{bmatrix} \begin{bmatrix}x\\\y \end{bmatrix} 
+   $$
 
 # Canvas 예제 
 
