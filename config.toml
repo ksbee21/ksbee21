@@ -18,7 +18,7 @@ paginate = 10
     subtitle = "천천히 ... 그리고 꾸준히 ..."
     brand = "KNMS"
     dateFormat = "2006. 01. 02, 15:04"    
-    googleAnalytics = ""
+    googleAnalytics = "G-XGZQZNDGGT"
     disqus = ""
     # CSS name for highlight.js
     highlightjs = "androidstudio"

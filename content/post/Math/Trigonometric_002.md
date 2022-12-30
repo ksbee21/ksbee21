@@ -109,7 +109,7 @@ description : ""
    > sin(alpha1+beta1) = sin(alpha1)*cos(beta1) + sin(beta1)*cos(alpha1)   
    > cos(alpha1) = x, sin(alpha1) = y 주어진 x,y 가 있을 경우 변화한 beta1 만큼만 이동하면 됩니다.    
    > 어떤 좌표에서 beta1 이 주어지면 beta1 만클이 아닌 시작점부터 변환한 것이기 때문에 변환된 위치는 사실 alpha1+beta1 의 위치 입니다.      
-   > y * cos(beta1) + x* sin(beta1) 이므로 행렬식에는 [ sin, cos ] 으로 표혀하게 됩니다.    
+   > y * cos(beta1) + x * sin(beta1) 이므로 행렬식에는 [ sin, cos ] 으로 표혀하게 됩니다.    
 
    ### 이상의 x, y 를 모두 조합하면 다음과 같은 행렬이 구성됩니다. 
    $$
