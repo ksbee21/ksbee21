@@ -1,8 +1,8 @@
 ---
-title: "Web_Canvas 기반 도형 맞추기 Game 01"
+title: "Web Canvas 기반 도형 맞추기 Game 01"
 date: 2023-01-01T21:08:32+09:00
 draft: false
-tags : ["Web","Canvas","Language","Javascript"]
+tags : ["Web","Canvas","Language","Javascript","Game"]
 topics : []
 description : "Canvas 테트리스 도형구성하기 "
 ---
