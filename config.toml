@@ -53,10 +53,10 @@ paginate = 10
     weight = 3
     identifier = "about"
     url = "/about/"
-#  [[menu.main]]
-#    name = "Contact"
-#    pre = "<i class='fa fa-phone fa-fw'></i>"
-#    weight = 4
-#    url = "/contact/"    
+ [[menu.main]]
+   name = "Contact"
+   pre = "<i class='fa fa-phone fa-fw'></i>"
+   weight = 4
+   url = "/contact/"    
 
 
