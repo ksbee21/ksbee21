@@ -10,6 +10,8 @@ copyright = "&copy; 2022. All right reserved."
 cononifyurls = true
 paginate = 10
 
+enableRobotsTXT = true
+
 [indexes]
   tag = "tags"
   topic = "topics"
@@ -58,5 +60,13 @@ paginate = 10
    pre = "<i class='fa fa-phone fa-fw'></i>"
    weight = 4
    url = "/contact/"    
+
+[outputs]
+  home = ["HTML","RSS","JSON"]
+
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
 
 
