@@ -4,7 +4,7 @@ date: 2023-01-10T21:50:03+09:00
 draft: false
 tags : ["Web","Canvas","Language","Javascript", "Image Processing"]
 topics : []
-description : ""
+description : "HTML5 Canvas 에서 이미지 다루기"
 ---
 
 # Canvas 에서 Image ? 
