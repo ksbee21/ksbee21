@@ -169,10 +169,10 @@ description : "HTML5 Canvas 에서 이미지 다루기"
             const idx = y*w*4+x*4;
             
             for ( let t = 0; t < 4; t++ ) {
-                result[t] = pixels[idx+t];
+                result[t] = pixels.data[idx+t];
             }
             return result;
-        }
+        };
 
    ``` 
    향후 Image Filter 를 적용할 때 사용하는 kernel 에서 활용하게 될 함수 입니다. 
