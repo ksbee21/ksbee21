@@ -109,10 +109,10 @@ description : "WebGL2 Texture 기초 정리"
    z 좌표가 모두 0인 평면이니, x,y 좌표만 확인해 보면 , 
    Position의 좌상단(-1, 1) 의 색상은 (1,0,0)-red 이고, 우상단(1,1) 은 (0,1,0) - green , 우하단 (1, -1) 은 (0,0,1) blue, 좌하단은 (-1,-1) 은 ( 1, 0, 1) - cyan 입니다.  
    동일한 좌표가 textureCoordinate 에서는 (0,0) - 좌하단, (1,0) 좌상단, (1,1) 우상단, (0, 1) 좌상단 을 지칭하고 있습니다.    pixel 이 보간되는 순서가 0,0 에서 시작 되기 때문에
-   만약 1,0 을 이미지의 왼쪽 상단을 연상하고 좌표를 구성해 놓으면, 이미지가 뒤집혀 보이는 현상이 나타나게 될 것 같습니다.    
+   만약 0,1 을 이미지의 왼쪽 상단을 연상하고 좌표를 구성해 놓으면, 이미지가 뒤집혀 보이는 현상이 나타나게 될 것 같습니다.    
 
 
-   ### 기존 Shader를 통해 화면 입니다. 
+   ### 기존 Shader를 통해 구현한 화면 입니다. 
    아직 Texture 를 다루기 전에 사용한 내용은 이전에 사용한 Shader 와 동일한 Shader 를 사용하였습니다. 
 
    [해당하는 결과는 다음에서 확인해 보실 수 있습니다.](/html/WebGL2/WebGL_PART_009_01.html)
@@ -282,10 +282,12 @@ description : "WebGL2 Texture 기초 정리"
 
    그럼 다음에 Texture 를 어떻게 로딩할 까요 ?
 
-   ### Texture Loading 
+   ### Texture Loading 과정 
 
    앞선 소스에서 몇가지 변경을 해 보도록 하겠습니다.   
    가장 먼저 Texture 를 사용하기 위해서는 Shader 내용을 변경하여야 합니다.   변경된 Shader 는 다음과 같습니다. 
+   texture uv 좌표를 받아 들이는 부분과, uniform sampler2D uTexture 사용자가 로딩한 texture 정보를 받아 들이고,  
+   GL 의 내장 함수인 texture(uTexture,vTexCoord); 를 통해 보간된 색상값을 가져 오는 부분입니다.    
 
    ``` javascript 
 
@@ -340,6 +342,9 @@ description : "WebGL2 Texture 기초 정리"
    ![기본이미지](/imgs/gl_09_02.png)
 
    호출하는 페이지 에서도 Texture 를 사용 할 수 있도록 다음과 같은 코드가 추가 되어 있습니다. 
+   loadGLTextureData 는 비 동기적으로 이미지르 파일을 읽기 때문에 처음 로딩할 때 미리 작은 이미지를 갖고 있다가, 이미지 로딩이 완료 되면 정상적으로 
+   texture 이미지로 그려 주고 있습니다.    three.js 를 만든 분이 구성한 webgl2 site 에서 참조한 내용인데 작은 이미지 로딩 , 고품질 이미지 로딩 등으로 
+   변형이 가능할 것 같습니다.   
 
    ``` javascript 
 
