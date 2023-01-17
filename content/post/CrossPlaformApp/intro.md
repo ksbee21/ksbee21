@@ -1,7 +1,7 @@
 ---
 title: "Cross Platform Applications"
 date: 2023-01-17T20:34:10+09:00
-draft: true
+draft: false
 tags : ["CrossPlatform","Application","Language","JAVA", "PYQT6","SWING","OpenJFX"]
 topics : []
 description : "Cross Platform Application 들"
@@ -62,9 +62,123 @@ description : "Cross Platform Application 들"
 
    설치가 정상적으로 되었다면, python 이후 import PyQt6 이 정상적으로 진행되면 정상 설치가 된것으로 봐도 좋을 것 같습니다. 
    Guide 문서에는 Qt Creator 나 Qt Designer 는 Qt Site 에서 받으라고 안내하고 있습니다.    
-   Qt 로만 작업한다면 툴은 받은 것이 좋지만, 진행 과정에서 필요할 때 설치 하도록 하겠습니다.   
+   Python 없이 Qt 로만 개발을 진행한다면, 위의 두개의 툴을 받아서 설치후 진행하는 것이 좋겠지만, PyQT의 메뉴얼를 보면서 진행하는 부분은 꼭 그렇게 하지 않아도 좋을 것 같습니다.  
+   먼저 메뉴얼 데로 진행하다가 필요할 때 설치 하도록 하겠습니다.    
+   한가지 먼저 확인할 내용은 PyQT 문서데로 진행하는 것은 License 가 GPL 입니다.    
 
-   
+   ### 첫번째 Application 
+   사실 공식 문서의 첫번째는 Hello world! 인데 이 문서에서는 Application 을 뛰우는 것으로 종료 합니다. 
+
+   ``` python 
+    from PyQt6.QtWidgets import QApplication, QWidget
+
+    import sys
+
+    app = QApplication(sys.argv)
+
+    window = QWidget()
+    window.show()
+
+    app.exec();
+   ```
+   python 은 뛰어쓰기가 문법이기 때문에 뛰어쓰기에 유의 해야 합니다.
+   app.py 로 저장 되어 있다면, python app.py 를 호출 하시면 빈 화면을 보실 수 있을 것 같습니다.   
+
+# Java Swing     
+
+   ### Java Install 
+   java jdk 를 설치하면 swing package 가 설치 되기 때문에 별도의 설치 과정이 필요 없습니다.   
+   java swing jfx 는 모두 소스를 변형해서 사용하지 않을 경우, 상용 모듈을 개발하여도 license 는 무료 입니다. 
+   jdk 설치에 관한 문서는 넘쳐 나기 때문에 별도로 기술 하지는 않겠습니다.  
+   swing 은 8 이상이면 문제 없지만, 현재 제가 설치한 version 은 openjdk 1.7 LTS version 입니다. 
+
+   ### 첫번째 Application 
+   ``` java 
+
+        import java.awt.*;
+        import javax.swing.*;
+
+        public class App {
+
+            private static void createAndShowGUI() {
+                JFrame jf = new JFrame("Hello World!!!");
+                jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                jf.setSize(new Dimension(500,500));        
+                jf.setVisible(true);
+            }
+
+            public static void main(String[] args) {
+                javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        createAndShowGUI();
+                    }
+                });
+            }
+        }
+
+
+   ```
+
+   javac App.java
+   java App 라고 실행 하면 빈 화면이 나타납니다.  
+
+# JAVA JFX 
+   java jfx 는 별도의 모듈을 설치하여야만 동작합니다.    
+   처음은 어떤 툴도 사용하지 않고, text editor 기능이 있는 곳에서 수동으로 하는 것으로 시작하겠습니다. 
+
+   ### Install 
+   다음의 사이트에서 모듈을 받을 수 있습니다. 저는 SDK Version 을 받아서 설치하였습니다. 
+   [https://gluonhq.com/products/javafx/](https://gluonhq.com/products/javafx/) 에서 처음 시작하는 모듈 확인이 가능합니다. 
+   [https://openjfx.io/openjfx-docs/#install-javafx](https://openjfx.io/openjfx-docs/#install-javafx) 사이트에서 최신 Version 을 다운 받아 zip을 풀면 됩니다. 
+
+   ### 첫번째 Application
+
+
+   ``` java
+
+        import javafx.application.Application;
+        import javafx.scene.Scene;
+        import javafx.scene.control.Label;
+        import javafx.scene.layout.StackPane;
+        import javafx.stage.Stage;
+
+        public class HelloFX extends Application {
+
+            @Override
+            public void start(Stage stage) {
+                String javaVersion = System.getProperty("java.version");
+                String javafxVersion = System.getProperty("javafx.version");
+                Label l = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
+                Scene scene = new Scene(new StackPane(l), 640, 480);
+                stage.setScene(scene);
+                stage.show();
+            }
+
+            public static void main(String[] args) {
+                launch();
+            }
+
+        }
+   ```    
+
+   실행 방법이 사이트에 잘 설명되어 있지만, 툴없이 진행한다면, 모듈 패스와 추가 클래스를 잘 확인하고 진행 하셔야 합니다. 
+   윈도우 환경 설명 입니다. 
+
+   ``` java 
+    set PATH_TO_FX="path\to\javafx-sdk-19\lib"
+
+    javac --module-path %PATH_TO_FX% --add-modules javafx.controls HelloFX.java
+
+    java --module-path %PATH_TO_FX% --add-modules javafx.controls HelloFX
+
+   ``` 
+
+   뭔가 비슷하면서 조금 차이가 있네요 ..  
+   다음 글에서 하나씩 정리해 보도록 하겠습니다.    
+
+
+
 
 
 
