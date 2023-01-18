@@ -2,7 +2,7 @@
 title: "Cross Platform Applications"
 date: 2023-01-17T20:34:10+09:00
 draft: false
-tags : ["CrossPlatform","Application","Language","JAVA", "PYQT6","SWING","OpenJFX"]
+tags : ["CrossPlatform","Application","Language","JAVA", "QT","PYQT6","SWING","OpenJFX"]
 topics : []
 description : "Cross Platform Application 들"
 ---
@@ -40,8 +40,66 @@ description : "Cross Platform Application 들"
    앞서 언급했듯, QT, JFX 가 있고, PYQT, SWING 등이 있으니 언어 계열로는 C++, JAVA 이고 거기에 PYTHON 이 포함된 것이니 모두 정리해 보면 어떨까 하는 생각 입니다.  
    일단 PYQT6, SWING, OpenJFX 를 기준으로 정리해 보겠습니다.    
    앞서 개인적인 관심사를 이야기한 이유는 혹시 제가 특정 언어를 더 많이 이야기 할 경우 다른 언어를 몰라서 그렇다는 이야기를 하고자 나열한 것입니다.  ^^
-   정리하는 내용 역시 그럴지 모르겠습니다. ^^ 
+   정리하는 내용 역시 그럴지 모르겠습니다. ^^    
+   처음 글을 구상할 때 QT6을 정리할 것이진 살짝 고민해 봤습니다. 잘 아는 분야도 아니고, 프로젝트에서 기존 QT 소스로 되어 있던 Application 을 기능을 추가 하여 
+   Java Swing으로 재 개발할때, QT 에 대해 그리 좋은 인상을 받은 것이 아니어서 더욱 그런 생각을 했던것 같습니다.      
+   하지만, 어차피 정리하려 들면 QT 자체도 정리하는게 좋을 것 같다는 생각을 하게 되었습니다.   아마도 조금 더 정리하는데 시간이 걸리지 않을까 생각 하고 있습니다.     
+
    향후 여력이 되면, C#, C++ 로 Windows Application 도 정리를 해 보고 싶지만, 일단 뒤로 미뤄 두겠습니다. ^^   
+
+# QT6  
+   C++ 모듈이기 때문에 Compiler Version 을 잘 맞춰서 구성해야 하지만, 다행히 Windows 에서는 설치 installer 를 제공하고 있고, MinGW Version 까지 설치해 주고 있기 때문에 
+   설치는 그렇게 어렵지 않게 진행할 수 있을 것 같습니다. ( OS 가 다를 경우 조금 다를 수 있습니다. )      
+   설치에 관련해서는 [https://blog.naver.com/PostView.naver?blogId=ittalentdonation&logNo=222533668963](https://blog.naver.com/PostView.naver?blogId=ittalentdonation&logNo=222533668963) 검색해서 발견한 
+   이 URL 의 내용을 참조하여 설치 하였습니다. ( 검색해서 알게된 사이트라, 혹시 원 저작자가 링크를 싫어 하시면 제거하도록 하겠습니다. )    
+
+   ### Install 
+   [https://www.qt.io/download](https://www.qt.io/download) site 에서 OpenSource 로 다운로드 후 설치를( Windows ) 진행하시면 됩니다.  위 참조 사이트에서 상세히 그림을 포함하여 설명하고 있습니다.   
+
+
+   ### 첫번째 Application 
+   QT도 아직 잘 모르는데 QT6 은 예상했던 Application 들이 아니어서 더 확인이 필요할 것 같습니다. 
+
+   첫번째 Defalut 로 프로젝트를 구성하여 Qt Creator 로 생성한 qmake 파일 선택 코드 들 입니다. .pro 는 생략 하였습니다. 
+
+   ``` C++
+
+        #include <QGuiApplication>
+        #include <QQmlApplicationEngine>
+
+
+        int main(int argc, char *argv[])
+        {
+            QGuiApplication app(argc, argv);
+
+            QQmlApplicationEngine engine;
+            const QUrl url(u"qrc:/TEST01/main.qml"_qs);
+            QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
+                            &app, [url](QObject *obj, const QUrl &objUrl) {
+                if (!obj && url == objUrl)
+                    QCoreApplication::exit(-1);
+            }, Qt::QueuedConnection);
+            engine.load(url);
+
+            return app.exec();
+        }
+
+
+        // qml 
+
+        import QtQuick
+
+        Window {
+            width: 640
+            height: 480
+            visible: true
+            title: qsTr("Hello World!!!")
+        }        
+
+   ```
+   PYQT 의 QApplication, QWidget 과는 유사하지만, 다른 클래스가 로딩되고 있습니다.      
+   하나씩 정리해 나가야 할 것 같습니다.   
+
 
 # PYQT6 
    PY QT 에 대해 검색을 하다보면, PYQT6 에 대해서는 언급된 내용이 별로 없습니다.  자료가 별로 없다는 것은 공부하는 입장에서는 별로 달가운 상황은 아닙니다.   
