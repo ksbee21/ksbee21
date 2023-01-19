@@ -1,5 +1,5 @@
 ---
-title: "QT, PYQT, SWING, JFX - Entry Point"
+title: "QT PYQT  SWING JFX Program 진입지점 "
 date: 2023-01-19T18:17:47+09:00
 draft: false
 tags : ["CrossPlatform","Application","Language","JAVA", "QT","PYQT6","SWING","OpenJFX"]
