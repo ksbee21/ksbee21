@@ -220,5 +220,24 @@ description : "Cross Platform Application 개발에 필요한 기초사항 정�
 
    지금까지 구성한 소스를 실행하면 왼쪽 부터 QT, PYQT, SWING, JFX 의 UI 입니다.  
 
+   ![QT](/imgs/qt_001.png) ![PYTHON](/imgs/py_001.png)   
+   ![SWING](/imgs/swing_001.png) ![JFX](/imgs/jfx_001.png)
+
+# 참조한 사이트 입니다.  
+
+   이곳 저곳 자료를 찾아서 정리하기 때문에 더 많은 사이트에서 정보를 취합하였지만, 대표적인 사이트만 나열하겠습니다. 
+
+   QT 사이트 입니다. [https://doc.qt.io/qtcreator/creator-getting-started.html](https://doc.qt.io/qtcreator/creator-getting-started.html)   
+   API 사이트 입니다 [https://doc-snapshots.qt.io/qt6-dev/](https://doc-snapshots.qt.io/qt6-dev/)    
+
+   PYQT6 사이트 입니다. [https://www.riverbankcomputing.com/static/Docs/PyQt6/](https://www.riverbankcomputing.com/static/Docs/PyQt6/)   
+   PYQT6 Tutorial 사이트 입니다. [https://www.pythonguis.com/pyqt6-tutorial/](https://www.pythonguis.com/pyqt6-tutorial/)    
+
+   JAVA SWING Tutorial 사이트 입니다. [https://docs.oracle.com/javase/tutorial/uiswing/index.html](https://docs.oracle.com/javase/tutorial/uiswing/index.html)    
+
+   JFX Tutorial 사이트 입니다. [https://docs.oracle.com/javafx/2/get_started/jfxpub-get_started.htm](https://docs.oracle.com/javafx/2/get_started/jfxpub-get_started.htm)   
+
+
+
 
 
