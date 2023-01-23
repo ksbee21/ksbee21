@@ -387,9 +387,7 @@ description : "WebGL 등에서 사용하는 구(Sphere) 만들기"
             }
             ctx.putImageData(imageData,0,0);
             ctx.restore();
-            console.log ( currentSet.size + " : " + samePositions);
-
-            console.log(canvas.toDataURL());
+            //console.log ( currentSet.size + " : " + samePositions);
         }
 
 
