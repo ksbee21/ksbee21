@@ -153,8 +153,6 @@ description : "WebGL 등에서 사용하는 구(Sphere) 만들기"
                }
                
                let uvy = r/ySize; 
-               //  만약 pixel 로 uv y 를 가져오려면 webgl 에서는 1-uvy
-               uvy = 1-uvy;
                let theta = Math.PI*thetaDeg/180;
                for ( let c = 0; c <= xSize; c++ ) {
                      let phiDeg = c*phiDelta;
