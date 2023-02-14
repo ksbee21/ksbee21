@@ -14,9 +14,10 @@ description : "각 언어별 예제 중심 정리"
 
    #### Border Layout Sample 
    [https://doc.qt.io/qt-6/qtwidgets-layouts-borderlayout-example.html](https://doc.qt.io/qt-6/qtwidgets-layouts-borderlayout-example.html)    
-   이 예제는 Qt Creator에서 소스를 확인할 수 있습니다. Swing, JFX 등에서 유사한 Layout 을 제공 하고 있고, QT 에서 사용자 Layout 을 구성할 때 어떻게 구성하는지를 
-   설명하고 있기 때문에 내부에서 어떤 작업이 진행되었는지 확인하기 좋은 예제 같습니다. QT 예서 예제로 제공하고 있는 소스라 어렵지 않게 구해 보실 수 있지만, 어떻게 사용자 구성 Layout을 만드는지에 대한 부분이라, 
-   소스를 나열하고 살펴 보도록 하겠습니다.   
+   이 예제는 Qt Creator에서 소스를 확인할 수 있습니다. Swing, JFX 등에서 유사한 Layout 을 제공 하고 있고, QT 에서 사용자 Layout 을 직접 구성할 때 어떻게 만들어야 하는지를  
+   설명하고 있기 때문에 QT 내부에서 어떤 작업이 진행되었는지 확인하기 좋은 예제 같습니다. QT 예서 예제로 제공하고 있는 소스라 QT 를 설치하면 확인해 볼 수 있는 소스지만,  정리를 위해 필요한 부분을 
+   나열하고 살펴보도록 하겠습니다. 
+
    ``` c++
       // Copyright (C) 2016 The Qt Company Ltd.
       // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
@@ -255,7 +256,8 @@ description : "각 언어별 예제 중심 정리"
       QLayoutItem *takeAt(int index) override;        //  등록된 아이템을 인덱스를 통해 반환합니다.   QWidget 에서 등록한 객체를 메모리 해제하는 역활을 하듯 소멸자에서 delete 를 수동으로 구성합니다. 
       void add(QLayoutItem *item, Position position); //  item add
    ```
-   간단히 주석으로 담은 것처럼, setGeometry 에서 center 영역은 다른 widget 의 크기를 계산후 남은 영역 전체를 차지하도록 구성하고 있습니다. 
+   간단히 주석으로 담은 것처럼, setGeometry 에서 center 영역은 다른 widget 의 크기를 계산후 남은 영역 전체를 차지하도록 구성하고 있습니다.  직접 크기를 계산하고 각 영역을 구성해 주는 방식입니다.    
+   QT 에서 제공하는 Layout 역시 응용프로그램을 개발하는 개발자가 직접하진 않을 뿐, 이런 작업이 진행될 것입니다. 
    소멸자에서 등록한 모든 widgets 메모리 해제 작업을 진행합니다.
    ##### ( QT 에서 자기들이 구성한 Widget 은 직접 관리하지만, 개발자가 수동으로 구성한 항목은 직접 관리해야 할 것 같습니다. ) 
 
@@ -316,7 +318,7 @@ description : "각 언어별 예제 중심 정리"
    button 클래스의 sizeHint 함수는 적절한 크기를 구성하기 위한 함수 입니다.   QT 에서 꾸밈을 구성할 때 사용할 수 있는 방법 같습니다.    
 
    계산을 위한 header 와 cpp 파일인데 소스가 QT 에서 제공하기 때문에 굳이 다시 나열하는 것이 의미는 없기 때문에 일부분만 추려서 기재하겠습니다.  
-   기능 설명을 해당 사이트 에서 상세히 있으니, 여기서 살펴볼 내용은 Event 를 구성하는 부분과, QGridLayout 를 구성하는 부분입니다. 
+   계산기에 대한 기능 설명은 해당 사이트 에서 상세히 있습니다. 계산기의 기능보다는 Event 를 구성하는 부분과, QGridLayout 를 구성하는 부분을 중점적으로 살펴 보고자 합니다. 
 
    ``` c++
 
@@ -392,6 +394,7 @@ description : "각 언어별 예제 중심 정리"
       #endif
    ```  
    header 파일에서 slots 으로 선언된 함수와 createButton 에서 QString 과 char* 형태로 매개변수를 선언했습니다.  
+   SLOT() 에 해당하는 부분이 char * 형식으로 매칭 되고 있습니다.   
 
    ``` c++ 
 
@@ -526,11 +529,11 @@ description : "각 언어별 예제 중심 정리"
    createButton 함수에서 보면, 첫번째 인자가 button 을 만드는 표시 이름이고, 두번째 char * member 는 SLOT 입니다.   
    connect(button, SIGNAL(clicked()), this, member ) 의 의미는 sender 가 button 이고, button 이 clicked 되었을 때 현재 객체인 Calculator 의 member 인 
    slot 함수가 호출되는 구조로 되어 있습니다.    
-   그중 한 함수인 slot 의  digitClicked 을 보면, Button *clickedButton = qobject_cast<Button *>(sender()); 을 통해 호출한 sender 가 무엇인지 sender() 라는 
+   그중 한 함수인 slot 의  digitClicked 내용을 보면, Button *clickedButton = qobject_cast<Button *>(sender()); 을 통해 호출한 sender 가 무엇인지 sender() 라는 
    메소드로 확인후 형변환 하여 Button 객체로 받아 들이고 있습니다. ( 이미 Button 객체라는 것을 알고 있기 때문에 가능... )    
    ##### slot 함수에서는 sender() 라는 함수를 통해 보낸 객체 정보를 가져올 수 있으니, 필요하다면 Event 를 발생 시킨 객체에 포함된 다른 정보도 전달이 가능할 것 같습니다.            
    int digitValue = clickedButton->text().toInt(); 은 sender 객체의 문자열을 받아 int 로 변환하고 있는 구문 입니다.   
-   display 가 QLineEdit 이니, 기존 문자열과 지금 확인한 문자열을 합하여 표현하는 로직이 들어가 있습니다.    
+   표현하는 display 가 QLineEdit 객체이고, 해당 영역에 기존 문자열과 지금 확인한 문자열을 합(문자열 결합)하여 표현하는 로직이 들어가 있습니다.    
 
 
    #### QGridLayout 는 어떻게 사용할까요? 
@@ -541,15 +544,15 @@ description : "각 언어별 예제 중심 정리"
          mainLayout->addWidget(display, 0, 0, 1, 6);
    ``` 
    먼저 3개의 구문만 확인해 보겠습니다.   
-   생성, 그리고, 사이즈를 고정 사이즈로 하겠다는 선언이 있습니다.   그리고 사용법인데 mainLayout->addWidget(display, 0, 0, 1, 6); 라고 사용하고 있습니다.    
-   addWidget 에서 display widget 은 세로 0, 가로 0 번째에서 시작하고, 세로는 1칸 가로는 6칸을 사용한다고 선언하고 있습니다.    
+   생성, 그리고, 사이즈를 고정 사이즈로 하겠다는 선언이 있습니다.   그리고 사용법인데 mainLayout->addWidget(display, 0, 0, 1, 6); 라고 호출 하고 있습니다.    
+   addWidget 에서 display widget 은 위치가 세로 0, 가로 0 번째에서 시작하고, 세로는 1칸 가로는 6칸을 사용한다고 선언하고 있습니다.    
    크기는 몰라도 대략 가장 윗줄에 텍스트 입력( readonly ) 형식의 widget 가로로 길게 공간을 차지하는 모습을 연상할 수 있습니다. 
-   mainLayout->addWidget(clearMemoryButton, 2, 0);  이 내용은 clearMemoryButton widget 은 위에서 3번째( index 2 ) 그리고 해당 열에서 첫번째 행 ( 0 ) 에 놓일 것이고, 
+   mainLayout->addWidget(clearMemoryButton, 2, 0);  이 내용은 clearMemoryButton widget 이 위에서 3번째( index 2 ) 그리고 해당 열에서 첫번째 행 ( 0 ) 에 놓일 것이고, 
    세로 한칸 가로 한칸을 차지한다는 의미 입니다.    그 아래 약간 for loop 는 3개 마다 다음행으로 넘어가야 하고, 그 시작이 2 부터 라는 표현이고, column 은 1부터 시작된다는 
    표현을 loop 안에서 하고 있습니다.    QGridLayout 은 cell 별로 시작 위치 차지하는 공간을 지정하여 구성할 수 있는 Layout 이기 때문입니다.    
 
 
-   QT 에서는 Event 와 Grid 구조 를 중심으로 확인해 보았습니다.    아래의 PYQT 에서는 Layout 에 집중해 확인해 보겠습니다.    
+   QT 에서는 사용자가 직접 구성하는 Layout을 통해 하나하나 위치를 계산하는 방법과, QT 에서 사용하는 Event 구성을 다시한번 확인해 보았습니다.    
 
 # PYQT6
 
