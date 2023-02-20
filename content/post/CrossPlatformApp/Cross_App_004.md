@@ -1,6 +1,6 @@
 ---
 title: "QT PYQT  SWING JFX Layout 기초 2"
-date: 2023-01-29T18:26:18+09:00
+date: 2023-02-20T18:26:18+09:00
 draft: true
 tags : ["CrossPlatform","Application","Language","JAVA", "QT","PYQT6","SWING","OpenJFX"]
 topics : []
