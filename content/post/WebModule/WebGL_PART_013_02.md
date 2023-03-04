@@ -1,7 +1,7 @@
 ---
 title: "WebGL2 - Program 시작 10 - Ray 충돌 - [ 14 ]"
 date: 2023-03-02T19:58:43+09:00
-draft: true
+draft: false
 tags : ["Web","WebGL", "Language","Javascript", "Programming","Math"]
 topics : []
 description : "WebGL 물체 선택 ( Picking Ray - Tracing 충돌 정리 )"
