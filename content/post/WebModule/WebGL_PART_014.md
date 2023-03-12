@@ -126,12 +126,12 @@ description : "WebGL 회전 변환 ( 카메라 중심 변환 )"
         const ve = makeArcballValues(ex,ey, fw, fh);
         const rdv = Math.acos(Math.max(-1.0,Math.min(1.0, makeDotProductVectors(vs, ve))));
         const vCross = makeNormalizeVector(makeVectorCrossProductValues(vs,ve));
-        return makeNormalizeVector(makeQuataianValueFormAxisAngle(rdv,vCross));
+        return makeNormalizeVector(makeQuaternionValueFormAxisAngle(rdv,vCross));
     };
 
    ``` 
    위의 내용으로 두개의 축 vs 와 ve 를 arcball 기법을 통해 얻어 올 수 있었습니다.   
-   두 축으로 부터 회전축과 theta 갑을 가져올 수 있었습니다.    
+   두 축으로 부터 회전축과 theta 값을 가져올 수 있었습니다.    
    코사인 쎄타 값은 내장 함수인 Math.acos 함수로 부터 theta 값을 가져올 수 있습니다. (radian 표기) 이 값이 회전 각도가 됩니다.  
    이 함수 에서는 아직 언급되지 않은 makeQuataianValueFormAxisAngle 함수가 있습니다.    
    x,y,z 각 축을 대상으로 회전을 하지 않고 구해진 임의의 축으로 부터 회전하기 위해서 쿼터니언(Quaternion) 이라고 불리는 사원수에 대해 
@@ -142,15 +142,20 @@ description : "WebGL 회전 변환 ( 카메라 중심 변환 )"
    u 가 회전축 단위 벡터 이고, theta 가 주어졌을 때 쿼터니언은 다음과 같은 공식으로 나타낼 수 있습니다.  
    $$
     \begin{aligned}
-        q   = (q_v, q_w) , \quad q_v = 허수부, q_w = 실수부 \\\
-        u = 회전축, \quad \theta = 회전량 \\\
-        q   = (sin \frac{\theta}{2} u, cos \frac{\theta}{2} )
+        i^2 = j^2 = k^2 = -1 \\\
+        ij = k, jk = i, ki = j \\\
+        ji = -k, kj = -i, ik = -j \\\
+        q = (q_xi,q_yj,q_zk,q_w) \quad q_v = (q_xi,q_yj,q_zk) \\\
+        q = (q_v, q_w) , \quad q_v = 허수부, q_w = 실수부 \\\
+        u = 회전축, \quad \theta = 회전각(radian) \\\
+        q = (sin \frac{\theta}{2} u, cos \frac{\theta}{2} ) \\\
+        \vert\vert q \vert\vert = \sqrt{q_x^2 + q_y^2  + q_z^2 + q_w^2}\\\
     \end{aligned}
    $$
 
    이 공식을 바탕으로 구성한 함수 입니다. 
    ``` javascript 
-        export const makeQuataianValueFormAxisAngle = (theta, axis) => {
+        export const makeQuaternionValueFormAxisAngle = (theta, axis) => {
             if ( !axis || axis.length != 3) {
                 return vec4(0,0,0,0);
             }
@@ -195,6 +200,10 @@ description : "WebGL 회전 변환 ( 카메라 중심 변환 )"
 	};
    
    ``` 
+   쿼터니언은 전체적으로 이해하기 쉬운 수식은 아닌것 같습니다. ( 제 경우 그렇다는 이야기 입니다. ^^ ) 
+   수식에 대한 설명을 보면 대략 이렇게 움직이는 구나 정도 이해하고 넘어가게 되는 것 같습니다.  회전에 필요한 부분은 
+   회전에 필요한 축을 생성하고, 해당 축에서 어느정도 각도를 움직이는가만 구성할 수 있으면, 제공해 놓은 공식으로 충분히 구성할 수 있을것 같습니다. 
+   향후 다른것을 이해하기 위해 정리가 필요해지면, 그 때 정리해 보고자 합니다.     
    처음에 기재해 놓았듯 카메라를 기준으로 쿼터니언 회전을 구현한 단순 예제 입니다.    
    #### [카메라 위치 변환 예제 - 마우스로 드래그 하면 VIEW 위치 변환 예제](/html/WebGL2/WebGL_PART_014_01.html)   
    예제에는 회전한 값을 저장하는 로직이 없기 때문에 다시 클릭하면 다시 변환이 이뤄집니다.
